@@ -1,0 +1,65 @@
+1. 간단한 변수
+(unsinged) short: 16비트
+(unsinged) int: 32비트
+(unsinged) long: 32비트
+(unsinged) long long: 64비트
+(unsinged) char: 8비트(1바이트 "정수"임, 메모리에 저장되는건 결국 정수로 저장됨)
+                 cout을 통해 출력하면 정수를 ASCII코드로 변환 후 출력함
+unsinged char16_t: 16비트 c++ 11 (unsinged char16_t a = u"d";)
+unsinged char32_t: 16비트 c++ 11 (unsinged char16_t a = U"d";)
+bool: 1비트
+
+오버 플로우나 언더 플로우가 발생했을 경우엔
+즉, 표현할 수 있는 한계를 벗어난다면 그 표현 범위의 반대편에서부터 다시 시작함
+ex) short의 최대값은 32767인데 여기서 +1을 해주면 -32768가 됨
+
+
+
+2. const
+#define 보단 const를 사용할 것
+
+
+
+3. 부동 소수점수
+34.1245 // 34124.5
+두 수는 기본값은 같고 스케일만 다름
+기본값은 0.341245이며 첫 수의 스케일은 100, 두 번째 수의 스케일은 100000임
+
+표기법
+- 12.34  // 
+- 2.5e+8 // + 생략가능 
+d.dddE+n 형식은  소수점을 오른쪽으로 n 자리만큼 이동하는 것이고,
+d.dddE-n 형식은 소수점을 왼쪽으로 n 자리만큼 이동하는 것이다.
+
+부동 소수점형
+float: 최소한 32비트(유효숫자 7개)
+double: float보다 크면서 최소한 48비트(최소 13개 유효함)
+long double: 최소 double와 같은 크기(80, 96, 128비트)
+
+부동 소수점형 상수
+기본적으로 double로 저장
+float으로 저장하고 싶다면? 1.2345f
+
+
+
+4. 산술연산자
+double -> float의 형변환: 정밀도가 손실됨
+부동소수점 -> 정수형: 소수부 손실
+long -> short의 형변환: 데이터형의 범위를 벗어나면 하위바이트만 복사됨
+
+c++11. {}사용시, narrowing conversion (축소변환을 막는다)
+int a = 3.0;     // ok
+int b {3.0};     // error, double to int
+char a {1233};   // error, 범위 초과
+char b = 23312;  // ok
+const int y = 66;
+int x = 66;
+char c {x};      // error, x가 상수가 아니라 안됨
+char d {y};      // ok, 상수라 가능 = 만약 y가 char 허용범위를 초과한다면 에러임
+
+데이터형변환
+(int) a; // C에서 사용하던 방식
+int(a);  // c++ 에서 사용할 수 있는 방식
+static_cast<int> (a); // 
+
+c++11. auto 
