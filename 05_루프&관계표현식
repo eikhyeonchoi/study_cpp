@@ -1,0 +1,24 @@
+문자열 비교
+string 클래스라면 비교연산자를 사용해서 비교 가능
+string 클래스가 아니라면 strcmp를 사용해서 비교
+
+시간지연루프 #include <ctime>
+clock(): 프로그램이 실행된 순간부터 이 함수가 호출된 순간까지 경과한 시스템시간을 리턴함
+CLOCKS_PER_SEC: 초당 시스템 시간 단위 수를 알려줌(기호상수)
+clock_t: clock()이 리턴하는 alias이름
+
+문자열입력
+char c;
+cin >> c;    // 화이트스페이스 무시함
+cin.get(ch); // 모든 문자 다 저장, EOF를 만나면 false를 리턴함
+cin.get();   // 모든 문자 다 저장, EOF를 만나면 iostream파일에 정의 되어있는 EOF 리턴
+
+
+
+4. range기반의 for loof(c++11)
+배열의 모든항목을 참조하려할 때
+int a[10] = {1,2,3,4,5};
+for(int i: a) {        // 만약 값을 변경하려 하면 int &i로 선언해줘야함(참조변수)
+    cout << i << endl; // i는 배열의 첫 번째 요소로 초기화됨
+}
+
